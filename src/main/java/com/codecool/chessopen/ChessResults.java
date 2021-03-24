@@ -1,13 +1,9 @@
 package com.codecool.chessopen;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +18,8 @@ public class ChessResults {
 
         try (Stream<String> data = Files.lines(Paths.get(fileName))) {
             data.map(line -> line.split(","))
-                    .forEach(arr -> {
-                        chessCupData.put(arr[0], sumPoints(arr));
-                    });
+                    .forEach(arr -> chessCupData.put(arr[0], sumPoints(arr))
+                    );
 
         } catch (IOException e) {
             System.out.println("File not found!");
